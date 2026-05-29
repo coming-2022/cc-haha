@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
-import { Camera } from 'lucide-react'
+import { Camera, MousePointer2 } from 'lucide-react'
 import { BrowserAddressBar } from './BrowserAddressBar'
 import { computeWebviewBounds } from './computeWebviewBounds'
 import { previewBridge } from '../../lib/previewBridge'
@@ -64,6 +64,19 @@ export function BrowserSurface({ sessionId }: { sessionId: string }) {
           onClick={() => previewBridge.eval(`window.__PREVIEW_BRIDGE__?.handleHostRaw('{"v":1,"type":"capture","kind":"full"}')`)}
         >
           <Camera size={16} />
+        </button>
+        <button
+          aria-label="选择元素"
+          aria-pressed={Boolean(session.pickerActive)}
+          className={`rounded p-1 hover:bg-muted ${session.pickerActive ? 'bg-muted text-primary' : ''}`}
+          onClick={() => {
+            const cur = useBrowserPanelStore.getState().bySession[sessionId]
+            const next = !cur?.pickerActive
+            store.setPicker(sessionId, next)
+            previewBridge.eval(`window.__PREVIEW_BRIDGE__?.handleHostRaw('{"v":1,"type":"${next ? 'enter-picker' : 'exit-picker'}"}')`)
+          }}
+        >
+          <MousePointer2 size={16} />
         </button>
       </div>
       <div ref={hostRef} className="flex-1" data-testid="preview-host" />

@@ -50,4 +50,15 @@ describe('BrowserSurface', () => {
     fireEvent.click(screen.getByLabelText('截图'))
     expect(bridge.eval).toHaveBeenCalledWith(expect.stringContaining('capture'))
   })
+
+  it('选择元素 button toggles pickerActive and signals the bridge', () => {
+    useBrowserPanelStore.getState().open('s1', 'http://localhost:5173/')
+    render(<BrowserSurface sessionId="s1" />)
+    fireEvent.click(screen.getByLabelText('选择元素'))
+    expect(useBrowserPanelStore.getState().bySession['s1']!.pickerActive).toBe(true)
+    expect(bridge.eval).toHaveBeenCalledWith(expect.stringContaining('enter-picker'))
+    fireEvent.click(screen.getByLabelText('选择元素'))
+    expect(useBrowserPanelStore.getState().bySession['s1']!.pickerActive).toBe(false)
+    expect(bridge.eval).toHaveBeenLastCalledWith(expect.stringContaining('exit-picker'))
+  })
 })
