@@ -34,6 +34,7 @@ export function AssistantOutputTargetCard({ target, sessionId, workDir }: Props)
         ? t('assistantOutputs.kind.markdown')
         : t('assistantOutputs.kind.image')
   const subtitle = target.subtitle ?? target.normalizedPath ?? target.href
+  const showSubtitle = subtitle !== target.title
 
   const handleOpen = useCallback((event: ReactMouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
@@ -99,9 +100,11 @@ export function AssistantOutputTargetCard({ target, sessionId, workDir }: Props)
             {badge}
           </span>
         </div>
-        <div className="mt-1 truncate text-xs text-[var(--color-text-tertiary)]" title={subtitle}>
-          {subtitle}
-        </div>
+        {showSubtitle && (
+          <div className="mt-1 truncate text-xs text-[var(--color-text-tertiary)]" title={subtitle}>
+            {subtitle}
+          </div>
+        )}
       </div>
 
       <div className="flex shrink-0 items-center gap-1.5">

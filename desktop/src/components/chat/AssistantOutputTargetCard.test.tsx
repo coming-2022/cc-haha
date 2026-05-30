@@ -74,10 +74,10 @@ describe('AssistantOutputTargetCard', () => {
     expect(screen.getByText('docs/readme.md')).toBeInTheDocument()
   })
 
-  it('renders a localhost target title + Localhost badge', () => {
+  it('renders a localhost target title + Localhost badge (URL not duplicated)', () => {
     render(<AssistantOutputTargetCard target={localhostTarget} sessionId="s1" />)
-    // Title + subtitle both fall back to href, so it appears twice.
-    expect(screen.getAllByText('http://localhost:5173/').length).toBeGreaterThan(0)
+    // subtitle equals the title for localhost, so the URL renders exactly once.
+    expect(screen.getAllByText('http://localhost:5173/')).toHaveLength(1)
     expect(screen.getByText('assistantOutputs.kind.localhost')).toBeInTheDocument()
   })
 
