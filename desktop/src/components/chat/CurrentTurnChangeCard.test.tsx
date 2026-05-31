@@ -280,8 +280,20 @@ describe('CurrentTurnChangeCard – open-with buttons', () => {
     expect(openPreviewSpy).toHaveBeenCalledWith('s1', 'README.md', 'file')
   })
 
-  it('clicking index.html open-with opens menu with in-app browser item', async () => {
+  it('clicking project index.html open-with opens menu with workspace preview item', async () => {
     renderCard(['/w/proj/index.html'])
+    const [openWithBtn] = screen.getAllByRole('button', { name: 'openWith.title' })
+
+    await act(async () => {
+      fireEvent.click(openWithBtn!)
+    })
+
+    expect(await screen.findByText('openWith.workspacePreview')).toBeInTheDocument()
+    expect(screen.queryByText('openWith.inAppBrowser')).not.toBeInTheDocument()
+  })
+
+  it('clicking built dist index.html open-with opens menu with in-app browser item', async () => {
+    renderCard(['/w/proj/dist/index.html'])
     const [openWithBtn] = screen.getAllByRole('button', { name: 'openWith.title' })
 
     await act(async () => {
