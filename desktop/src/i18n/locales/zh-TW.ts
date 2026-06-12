@@ -1346,6 +1346,15 @@ export const zh: Record<TranslationKey, string> = {
   'permission.hideDetails': '隱藏詳情',
   'permission.showFullInput': '顯示完整輸入',
   'permission.replacingContent': '替換檔案內容',
+  'permission.planReadyTitle': '準備開始編碼？',
+  'permission.planPreviewTitle': 'Claude 的計劃',
+  'permission.planRequestedPermissions': '請求的權限',
+  'permission.planApprove': '批准計劃',
+  'permission.planKeepPlanning': '繼續規劃',
+  'permission.planFeedbackPlaceholder': '告訴 Claude 需要修改什麼',
+  'permission.planEmpty': '暫無計劃內容。',
+  'permission.planApproved': '計劃已批准',
+  'permission.planRejected': '計劃已拒絕',
 
   // ─── Computer Use Approval ──────────────────────────────────────
   'computerUseApproval.titleApps': 'Computer Use 想控制這些應用',

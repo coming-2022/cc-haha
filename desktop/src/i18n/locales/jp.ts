@@ -1346,6 +1346,15 @@ export const jp: Record<TranslationKey, string> = {
   'permission.hideDetails': '詳細を非表示',
   'permission.showFullInput': '入力全体を表示',
   'permission.replacingContent': 'ファイル内のコンテンツを置換中',
+  'permission.planReadyTitle': 'コーディングを開始しますか？',
+  'permission.planPreviewTitle': 'Claude の計画',
+  'permission.planRequestedPermissions': '要求された権限',
+  'permission.planApprove': '計画を承認',
+  'permission.planKeepPlanning': '計画を続ける',
+  'permission.planFeedbackPlaceholder': 'Claude に変更内容を伝える',
+  'permission.planEmpty': '計画内容はありません。',
+  'permission.planApproved': '計画が承認されました',
+  'permission.planRejected': '計画が拒否されました',
 
   // ─── Computer Use Approval ──────────────────────────────────────
   'computerUseApproval.titleApps': 'コンピューター操作がこれらのアプリを操作しようとしています',

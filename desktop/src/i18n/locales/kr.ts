@@ -1346,6 +1346,15 @@ export const kr: Record<TranslationKey, string> = {
   'permission.hideDetails': '세부 정보 숨기기',
   'permission.showFullInput': '전체 입력 표시',
   'permission.replacingContent': '파일 내용 교체 중',
+  'permission.planReadyTitle': '코딩을 시작할까요?',
+  'permission.planPreviewTitle': 'Claude의 계획',
+  'permission.planRequestedPermissions': '요청된 권한',
+  'permission.planApprove': '계획 승인',
+  'permission.planKeepPlanning': '계속 계획하기',
+  'permission.planFeedbackPlaceholder': 'Claude에게 변경할 내용을 알려주세요',
+  'permission.planEmpty': '계획 내용이 없습니다.',
+  'permission.planApproved': '계획 승인됨',
+  'permission.planRejected': '계획 거부됨',
 
   // ─── Computer Use Approval ──────────────────────────────────────
   'computerUseApproval.titleApps': '컴퓨터 사용이 이 앱들을 제어하려고 합니다',

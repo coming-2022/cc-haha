@@ -570,6 +570,8 @@ function handlePermissionResponse(
     message.allowed,
     message.rule,
     message.updatedInput,
+    message.denyMessage,
+    message.permissionUpdates,
   )
   console.log(`[WS] Permission response for ${message.requestId}: ${message.allowed}`)
 }

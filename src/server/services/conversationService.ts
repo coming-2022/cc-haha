@@ -465,6 +465,8 @@ export class ConversationService {
     allowed: boolean,
     rule?: string,
     updatedInput?: Record<string, unknown>,
+    denyMessage?: string,
+    permissionUpdates?: unknown[],
   ): boolean {
     const session = this.sessions.get(sessionId)
     const pendingRequest = session?.pendingPermissionRequests.get(requestId)
@@ -481,7 +483,9 @@ export class ConversationService {
           ? {
               behavior: 'allow',
               updatedInput: updatedInput ?? {},
-              ...(rule === 'always' && pendingRequest
+              ...(Array.isArray(permissionUpdates) && permissionUpdates.length > 0
+                ? { updatedPermissions: permissionUpdates }
+                : rule === 'always' && pendingRequest
                 ? {
                     updatedPermissions: [
                       ...normalizeSessionPermissionUpdates(
@@ -492,7 +496,7 @@ export class ConversationService {
                   }
                 : {}),
             }
-          : { behavior: 'deny', message: 'User denied via UI' },
+          : { behavior: 'deny', message: denyMessage || 'User denied via UI' },
       },
     })
   }

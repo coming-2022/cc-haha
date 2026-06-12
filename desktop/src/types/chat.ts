@@ -14,6 +14,8 @@ export type ClientMessage =
       allowed: boolean
       rule?: string
       updatedInput?: Record<string, unknown>
+      denyMessage?: string
+      permissionUpdates?: PermissionUpdate[]
     }
   | {
       type: 'computer_use_permission_response'
@@ -37,6 +39,24 @@ export type AttachmentRef = {
   note?: string
   quote?: string
 }
+
+export type PermissionUpdate =
+  | {
+      type: 'addRules' | 'replaceRules' | 'removeRules'
+      rules: Array<{ toolName: string; ruleContent?: string }>
+      behavior: 'allow' | 'deny' | 'ask'
+      destination: 'userSettings' | 'projectSettings' | 'localSettings' | 'session' | 'cliArg'
+    }
+  | {
+      type: 'setMode'
+      mode: PermissionMode
+      destination: 'userSettings' | 'projectSettings' | 'localSettings' | 'session' | 'cliArg'
+    }
+  | {
+      type: 'addDirectories' | 'removeDirectories'
+      directories: string[]
+      destination: 'userSettings' | 'projectSettings' | 'localSettings' | 'session' | 'cliArg'
+    }
 
 export type UIAttachment = {
   type: 'file' | 'image'

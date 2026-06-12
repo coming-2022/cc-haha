@@ -17,6 +17,8 @@ export type ClientMessage =
       allowed: boolean
       rule?: string
       updatedInput?: Record<string, unknown>
+      denyMessage?: string
+      permissionUpdates?: unknown[]
     }
   | {
       type: 'computer_use_permission_response'

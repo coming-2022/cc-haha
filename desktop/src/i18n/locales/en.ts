@@ -1344,6 +1344,15 @@ export const en = {
   'permission.hideDetails': 'Hide details',
   'permission.showFullInput': 'Show full input',
   'permission.replacingContent': 'Replacing content in file',
+  'permission.planReadyTitle': 'Ready to code?',
+  'permission.planPreviewTitle': "Claude's plan",
+  'permission.planRequestedPermissions': 'Requested permissions',
+  'permission.planApprove': 'Approve plan',
+  'permission.planKeepPlanning': 'Keep planning',
+  'permission.planFeedbackPlaceholder': 'Tell Claude what to change',
+  'permission.planEmpty': 'No plan content available.',
+  'permission.planApproved': 'Plan approved',
+  'permission.planRejected': 'Plan rejected',
 
   // ─── Computer Use Approval ──────────────────────────────────────
   'computerUseApproval.titleApps': 'Computer Use wants to control these apps',

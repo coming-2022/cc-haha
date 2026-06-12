@@ -30,6 +30,7 @@ import type {
   UIMessage,
   ServerMessage,
   TokenUsage,
+  PermissionUpdate,
 } from '../types/chat'
 
 type ConnectionState = 'disconnected' | 'connecting' | 'connected' | 'reconnecting'
@@ -146,6 +147,8 @@ type ChatStore = {
     options?: {
       rule?: string
       updatedInput?: Record<string, unknown>
+      denyMessage?: string
+      permissionUpdates?: PermissionUpdate[]
     },
   ) => void
   respondToComputerUsePermission: (
@@ -1004,6 +1007,8 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       allowed,
       ...(options?.rule ? { rule: options.rule } : {}),
       ...(options?.updatedInput ? { updatedInput: options.updatedInput } : {}),
+      ...(options?.denyMessage ? { denyMessage: options.denyMessage } : {}),
+      ...(options?.permissionUpdates?.length ? { permissionUpdates: options.permissionUpdates } : {}),
     })
     set((s) => ({ sessions: updateSessionIn(s.sessions, sessionId, () => ({ pendingPermission: null, chatState: allowed ? 'tool_executing' : 'idle' })) }))
   },
